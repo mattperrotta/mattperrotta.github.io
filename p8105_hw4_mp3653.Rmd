@@ -50,7 +50,7 @@ Snowfall seems to peak between -10 and 0 degrees celsius
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### Plot of Maximum Temperatures vs Minimum Temperatures
 
 ```{r}
 tmin_tmax = noaa %>% 
@@ -64,9 +64,18 @@ tmin_tmax = noaa %>%
 ggplotly(tmin_tmax)
 ```
 
-### Chart C
+### Maximum Recorded Temperatures by Year
 
 ```{r}
-
+tmax_box = noaa %>% 
+  group_by(year) %>% 
+  ggplot(aes(x = year, y = tmax)) +
+  geom_boxplot() +
+  labs(
+    title = 'Maximum Temperatures by Year',
+    x = 'Year',
+    y = 'Maximum Temperatures (celsius)'
+  )
+ggplotly(tmax_box)
 ```
 
