@@ -44,8 +44,6 @@ snow_scatter = noaa %>%
 ggplotly(snow_scatter)
 ```
 
-Snowfall seems to peak between -10 and 0 degrees celsius
-
 
 Column {data-width=350}
 -----------------------------------------------------------------------
