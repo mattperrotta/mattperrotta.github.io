@@ -3,10 +3,10 @@ output_dir: "."
 navbar:
   title: "Home"
   right:
-    - text: "About"
-      href: about.html
+    - text: "Resume"
+      href: resume.html
     - icon: fa-envelope fa-lg
-      href: mattperrotta@gmail.com>
+      href: mp3653@cumc.columbia.edu>
     - icon: fa-github fa-lg
       href: http://github.com/mattperrotta/
 output:

@@ -1,0 +1,69 @@
+---
+title: "Matthew Perrotta"
+---
+
+-------------------
+mp3653@cumc.columbia.edu
+617-276-2023            
+------------------- 
+
+_________
+
+Education
+---------
+
+**Columbia University Mailman School of Public Health** (New York, NY)
+:   MPH, Epidemiology (2017-2019)
+    
+    *Certificate in Infectious Disease Epidemiology*
+
+**Fordham University** (Bronx, NY)
+:   BS, Biology; Minor, Environmental Policy (2011-2015)
+
+Experience
+----------
+
+**EcoHealth Alliance** (New York, NY)
+:    *Intern on the IDEEAL project*
+
+:     April 2018 - Present
+:     Modelling the economic impact of land use change in Malaysia. My work on the project thus far includes:
+
+      * Extracting and cleaning malaria and dengue data from government reports using R
+      * Exploratory analysis of disease and land use data on the district level in Malaysia
+      * Creating spatial autoregressive models 
+
+**New York City Department of Health and Mental Hygiene** (Queens, NY)
+:   *Intern in the Bureau of TB Control*
+
+:     May 2018 - Present
+
+      * Conducting an exploratory analysis on diabetes in the TB patient population of New York City
+
+**Beth Israel Deaconess Medical Center** (Boston, MA)
+:   *Clinical Research Assistant in the Kelly-Pollock Lab*
+
+:     March 2016 - August 2017
+:     Coordinator for IRB approved study looking to quantify toxin concentration in asymptomatic carriers of Clostridium difficile and was actively involved in an NIH R01 funded study on patients symptomatic for Clostridium difficile infection
+
+      * Responsible for screening, enrolling, and follow-up for over 600 hospital inpatients for both research studies
+      * Wrote and implemented study protocols and completed IRB correspondence
+      * Performed literature review, data entry, and database management
+
+
+
+Skills
+---------
+
+
+**Programming languages and statistical packages**
+
+      * R
+      * SAS
+    
+**Mirosoft products**
+
+      * Microsoft Access
+      * Microsoft Word
+      * Microsoft Excel
+      * Microsoft PowerPoint
