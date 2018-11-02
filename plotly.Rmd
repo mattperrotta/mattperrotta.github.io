@@ -1,12 +1,10 @@
 ---
-title: "Plotly"
+title: "p8105_hw4_mp3653"
 author: "Matthew Perrotta"
-date: "October 23, 2018"
-output: html_document
+output: github_document
 ---
 
-This page shows some example plotly plots
-
+Libraries
 ```{r}
 library(tidyverse)
 library(viridis)
