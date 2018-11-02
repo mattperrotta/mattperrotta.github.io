@@ -1,0 +1,72 @@
+---
+title: "p8105_hw4_mp3653"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(viridis)
+library(p8105.datasets)
+library(plotly)
+
+set.seed(1)
+
+noaa = p8105.datasets::ny_noaa %>% 
+  janitor::clean_names() %>% 
+  separate(date, into = c('year', 'month', 'day'), sep = '-') %>% 
+  mutate(tmax = as.numeric(tmax),
+         tmin = as.numeric(tmin)) %>% 
+  mutate(prcp = prcp/10, 
+         tmax = tmax/10, 
+         tmin = tmin/10) %>% 
+  sample_n(5000) 
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Snowfall vs. Minimum Temperature
+
+```{r}
+snow_scatter = noaa %>% 
+  ggplot(aes(x = tmin, y = snow)) +
+  geom_point() +
+  labs(
+    title = 'Snowfall vs Minimum Temperature',
+    x = 'Minimum Temp (celsius)',
+    y = 'Snowfall (mm)'
+  )
+
+ggplotly(snow_scatter)
+```
+
+Snowfall seems to peak between -10 and 0 degrees celsius
+
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+tmin_tmax = noaa %>% 
+  ggplot(aes(x = tmax, y = tmin)) +
+  geom_hex() +
+  labs(
+    title = 'Maximum Temp vs Minimum Temp',
+    x = 'Max Temp (celsius)',
+    y = 'Min Temp (celsius)'
+  ) 
+ggplotly(tmin_tmax)
+```
+
+### Chart C
+
+```{r}
+
+```
+
