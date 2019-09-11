@@ -1,19 +1,33 @@
 ---
-title: "Matthew Perrotta"
+title: "Matthew Perrotta, MPH"
 ---
 
-MPH candidate
-:   Department of Epidemiology
-:   Columbia University Mailman School of Public Health
+<center>
+
+<link rel="stylesheet" href="styles.css" type="text/css">
+<link rel="stylesheet" href="academicons/css/academicons.min.css"/>
+<link rel="apple-touch-icon" href="/images/JG_transparent.png" >
+
+<center>
+<br><img src="images/ireland_sweater.jpg" alt="matt" style="width:65%; border:5px solid"><br>
 
 
-<img src="images/Headshot_Matthew_Perrotta.png" style="width:50%">
+#### About
 
+[Department of Biostatistics](http://www.mailman.columbia.edu/academic-departments/biostatistics)  
+[Columbia Mailman School of Public Health](http://www.mailman.columbia.edu/)
 
-### A Little Bit About Me
+I received a BS in mathematics from [Dickinson College](http://www.dickinson.edu) in 2007 and a PhD in Biostatistics from [Johns Hopkins University](http://www.jhsph.edu/departments/biostatistics/) in 2012. My dissertation was advised by [Ciprian Crainiceanu](http://www.biostat.jhsph.edu/~ccrainic/) and [Brian Caffo](https://sites.google.com/view/bcaffo/home), and focused on statistical methods for high-dimensional structured data. I joined Columbia as an assistant professor in 2012.
 
-I was born and raised in Boston and left for college in New York City when I attended [Fordham Univertiy](https://www.fordham.edu/) in 2011 and earned a BS in biology. I am currently working towards my MPH at the [Columbia University Mailman School of Public Health](https://www.mailman.columbia.edu/). I am interested in understanding the drivers of zoonotic infectious disease emergence, especially in the context of the changing climate. 
+My statistical research is generally focused on functional data analysis, and draws heavily from ongoing collaborations with researchers in other disciplines. One major emphasis is the use of motion kinematics to understand motor control, skill learning, and recovery following stroke; another is physical activity measurement and quantification using wearable devices. The [research](research.html) page has more information on recent projects. 
 
-Academics aside, I am an avid hockey fan (played through college) and space enthusiast (maybe one day they'll need epidemiologists on Mars!).
+In 2013, I founded (with [Todd Ogden](https://www.mailman.columbia.edu/people/our-faculty/to166) and [Phil Reiss](https://works.bepress.com/phil_reiss/)) the Functional Data Analysis Working Group ([FDAWG](https://www.mailman.columbia.edu/research/functional-data-analysis-working-group)) at Columbia Biostat. 
 
-The link to homework 4 plots is [here](p8105_hw4_mp3653.html) 
+<br>
+
+#### Contact Information
+
+Matthew Perrotta  
+
+Email: [mp3653@columbia.edu](mailto:mp3653@columbia.edu)  
+Phone: (617) 276-2023 
