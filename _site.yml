@@ -2,9 +2,12 @@ name: "Matthew Perrotta"
 output_dir: "."
 navbar:
   title: "Home"
+  left: 
+    - text: "About"
+      href: about.html
   right:
     - text: "Resume"
-      href: resume.html
+      href: ./resume/Resume_Matthew_Perrotta.pdf
     - icon: fa-envelope fa-lg
       href: mailto:mp3653@columbia.edu
     - icon: fa-github fa-lg
@@ -12,3 +15,6 @@ navbar:
 output:
   html_document:
     theme: sandstone
+    include:
+      after_body: footer.html
+    css: styles.css

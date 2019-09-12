@@ -14,7 +14,6 @@ title: ""
 
 <br><img src="images/ireland_sweater.jpg" alt="matt" style="width:65%; border:5px solid"><br>
 
-</center>
 
 #### About
 
