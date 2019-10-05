@@ -20,7 +20,7 @@ title: ""
 [Department of Epidemiology](http://www.mailman.columbia.edu/academic-departments/epidemiology)  
 [Columbia Mailman School of Public Health](http://www.mailman.columbia.edu/)
 
-I received a BS in Biology from [Fordham University](http://www.fordham.edu) in 2015 and a MPH in Epidemiology from [Johns Hopkins University](http://www.jhsph.edu/departments/biostatistics/) in 2019. My dissertation was advised by [Ciprian Crainiceanu](http://www.biostat.jhsph.edu/~ccrainic/) and [Brian Caffo](https://sites.google.com/view/bcaffo/home), and focused on statistical methods for high-dimensional structured data. I joined Columbia as an assistant professor in 2012.
+I received a BS in Biology from [Fordham University](http://www.fordham.edu) in 2015 and a MPH in Epidemiology from [COlumbia University](http://www.mailman.columbia.edu/academic-departments/epidemiology) in 2019.
 
 
 <br>
