@@ -12,15 +12,14 @@ title: ""
 <link rel="stylesheet" href="academicons/css/academicons.min.css"/>
 <link rel="apple-touch-icon" href="/images/JG_transparent.png" >
 
-<br><img src="images/ireland_sweater.jpg" alt="matt" style="width:65%; border:5px solid"><br>
+<br>
+
+<img src="images/ireland_sweater.jpg" alt="matt" style="width:65%; border:5px solid">
+
+<br>
 
 
-#### About
-
-[Department of Epidemiology](http://www.mailman.columbia.edu/academic-departments/epidemiology)  
-[Columbia Mailman School of Public Health](http://www.mailman.columbia.edu/)
-
-I received a BS in Biology from [Fordham University](http://www.fordham.edu) in 2015 and a MPH in Epidemiology from [COlumbia University](http://www.mailman.columbia.edu/academic-departments/epidemiology) in 2019.
+Passionate and dedicated public health analyst. Background in epidemiology and biostatistics; skilled in R, SAS, and statistical data analysis. Strong personal interest in understanding spread of zoonotic diseases through the lense of the One Health concept. 
 
 
 <br>
