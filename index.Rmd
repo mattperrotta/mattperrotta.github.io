@@ -6,7 +6,7 @@ title: ""
 <br>
 <br>
 
-# Matthew Perrotta, MPH
+# __Matthew Perrotta, MPH__
 
 <link rel="stylesheet" href="styles.css" type="text/css">
 <link rel="stylesheet" href="academicons/css/academicons.min.css"/>
