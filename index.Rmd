@@ -14,19 +14,9 @@ title: ""
 
 <br>
 
-<img src="images/ireland_sweater.jpg" alt="matt" style="width:65%; border:5px solid">
+<img src="images/ireland_sweater_circular.png" alt="matt" style="width:65%">
 
 <br>
 
 
 Passionate and dedicated public health analyst. Background in epidemiology and biostatistics; skilled in R, SAS, and statistical data analysis. Strong personal interest in understanding spread of zoonotic diseases through the lense of the One Health concept. 
-
-
-<br>
-
-#### Contact Information
-
-Matthew Perrotta  
-
-Email: [mp3653@columbia.edu](mailto:mp3653@columbia.edu)  
-Phone: (617) 276-2023 
