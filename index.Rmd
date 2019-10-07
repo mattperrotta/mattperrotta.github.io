@@ -19,4 +19,4 @@ title: ""
 <br>
 
 
-Passionate and dedicated public health analyst. Background in epidemiology and biostatistics; skilled in R, SAS, and statistical data analysis. Strong personal interest in understanding spread of zoonotic diseases through the lense of the One Health concept. 
+<large>Passionate and dedicated public health analyst. Background in epidemiology and biostatistics; skilled in R, SAS, and statistical data analysis. Strong interests in evidence-based medicine and health polict as well as in understanding the spread of zoonotic diseases through the lense of the One Health concept. 
