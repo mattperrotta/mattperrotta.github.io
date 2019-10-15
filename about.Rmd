@@ -12,10 +12,12 @@ title: ""
 
 # __About__
 
-[Department of Epidemiology](http://www.mailman.columbia.edu/academic-departments/epidemiology)  
-[Columbia Mailman School of Public Health](http://www.mailman.columbia.edu/)
+<br>
 
-I received a BS in Biology from [Fordham University](http://www.fordham.edu) in 2015 and a MPH in Epidemiology from [Columbia University](http://www.mailman.columbia.edu/academic-departments/epidemiology) in 2019.
+</center>
+<left>
+
+<br>
 
 
 I am a recent graduate from the [Columbia University Mailman School of Public Health](http://www.mailman.columbia.edu/) with a Master of Public Health I have experience in data analysis, R, SAS, and epidemiological methods as well as a strong interest in evidence-based medicine. With these qualifications, I believe I am a strong fit for this opportunity and would be honored to be considered.

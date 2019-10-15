@@ -5,11 +5,11 @@ navbar:
   left: 
     - text: "About"
       href: about.html
+    - text: "Resume"
+      href: ./resume/Resume_Matthew_Perrotta.pdf
     - text: "Contact"
       href: contact.html
   right:
-    - text: "Resume"
-      href: ./resume/Resume_Matthew_Perrotta.pdf
     - icon: fa-linkedin fa-lg
       href: https://www.linkedin.com/in/matthewperrotta/
     - icon: fa-envelope fa-lg
