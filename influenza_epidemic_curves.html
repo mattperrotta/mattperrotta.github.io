@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Influenza Epidemic Curves</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h2 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h3 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h4 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h5 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.section h6 {
+  padding-top: 65px;
+  margin-top: -65px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Home</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="./resume/Resume_Matthew_Perrotta.pdf">Resume</a>
+</li>
+<li>
+  <a href="contact.html">Contact</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://www.linkedin.com/in/matthewperrotta/">
+    <span class="fa fa-linkedin fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="mailto:mp3653@columbia.edu">
+    <span class="fa fa-envelope fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="http://github.com/mattperrotta/">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Influenza Epidemic Curves</h1>
+
+</div>
+
+
+<p>This project will examime the seasonality of inlfuenza in different regions in the world using country level influenza data.</p>
+<div id="reading-and-cleaning-the-data" class="section level3">
+<h3>Reading and Cleaning the Data</h3>
+<p>Data was obtained from The WHO FLunet. The file was too large to handle, so the data was converted to multiple CSVs, and then function was written to read in the multiple CSV files.</p>
+<pre class="r"><code>file_df = tibble(file_path = list.files(&#39;./data/&#39;, pattern = &#39;*.csv&#39;, full.names = TRUE), file_name = basename(file_path))
+
+read_data = function(data){
+  
+  read_csv(file = data, skip = 3)
+  
+}
+
+flu_df = file_df %&gt;%
+  mutate(obs = map(file_path, read_data)) %&gt;% 
+  unnest() %&gt;% 
+  janitor::clean_names() %&gt;% 
+  mutate(year = as.factor(year),
+         week = as.numeric(week),
+         #Date is the last day of every epi week
+         date = edate) %&gt;% 
+  #Flu data originally listed by country, combining into influenza transmission zones.
+  group_by(fluregion, year, week, date) %&gt;% 
+  summarize(cases = sum(all_inf, na.rm = TRUE),
+            h1 = sum(ah1, na.rm = TRUE),
+            h3 = sum(ah3, na.rm = TRUE),
+            h5 = sum(ah5, na.rm = TRUE),
+            h1n1 = sum(ah1n12009, na.rm = TRUE),
+            a_total = sum(inf_a, na.rm = TRUE),
+            b_total = sum(inf_b, na.rm = TRUE),
+            processed_samples = sum(spec_processed_nb, na.rm = TRUE),
+            #These variables are the proportion of processed samples that test positive for influenza a or b respectively 
+            inf_a_prop = sum(inf_a, na.rm = TRUE)/sum(spec_processed_nb, na.rm = TRUE),
+            inf_b_prop = sum(inf_b, na.rm = TRUE)/sum(spec_processed_nb, na.rm = TRUE))</code></pre>
+<p>In order to to calculate rates, population data was obtained from the World Bank. The population for each country was averaged from 2008 until 2014.</p>
+<pre class="r"><code>pop_df = read_excel(&quot;./data/pop_data.xls&quot;, skip = 3) %&gt;% 
+  janitor::clean_names() %&gt;% 
+  #Selecting the specific year we are reading in.
+  select(country, country_code, x2008:x2014) %&gt;% 
+  gather(key = year, value = pop, x2008:x2014) %&gt;% 
+  group_by(country) %&gt;% 
+  #Calculating the mean population for each country over the respective time period.
+  summarize(mean_pop = mean(pop))</code></pre>
+<p>Join <code>flu_df</code> and <code>pop_df</code> and create new variable <code>cases_by_100k</code> (the number of cases per 100k in a given zone in a given epi-week).</p>
+<pre class="r"><code>countries = file_df %&gt;%
+  mutate(obs = map(file_path, read_data)) %&gt;% 
+  unnest() %&gt;% 
+  janitor::clean_names() %&gt;%
+  select(country, fluregion)
+
+demo = left_join(countries, pop_df, by = &#39;country&#39;) %&gt;% 
+  group_by(fluregion) %&gt;% 
+  ##Summing the average population of each country in a given zone to create a zone population.
+  summarize(pop = sum(mean_pop, na.rm = TRUE))
+
+flu_df = left_join(flu_df, demo, by = &#39;fluregion&#39;) %&gt;% 
+  ##creating a variable to describe the number of cases per 100,000
+  mutate(cases_by_100k = (cases*100000)/pop)</code></pre>
+<p>The datafram <code>flu_df</code> has 16 variables and 6515 observations.</p>
+</div>
+<div id="eda-and-visualization" class="section level3">
+<h3>EDA and Visualization</h3>
+<pre class="r"><code>flu_df %&gt;%
+  group_by(year) %&gt;% 
+  summarize(type_a = sum(a_total),
+            type_b = sum(b_total)) %&gt;% 
+  gather(key = type, value = count, type_a:type_b) %&gt;% 
+  ggplot(aes(x = year, y = count, fill = type)) +
+  geom_bar(stat = &#39;identity&#39;, position = &#39;dodge&#39;) +
+  labs(
+    title = &#39;Prevalence of Influenza Type by Year&#39;,
+    x = &#39;Year&#39;,
+    y = &#39;Positive Surveillane Samples&#39;
+  )</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>flu_df %&gt;%
+  group_by(year) %&gt;% 
+  summarize(h1n1 = sum(h1n1),
+            h3 = sum(h3),
+            h5 = sum(h5)) %&gt;% 
+  gather(key = subtype, value = count, h1n1:h5) %&gt;% 
+  ggplot(aes(x = year, y = count, fill = subtype)) +
+  geom_bar(stat = &#39;identity&#39;, position = &#39;dodge&#39;) +
+  labs(
+    title = &#39;Prevalence of Influenza A Subtype by Year&#39;,
+    x = &#39;Year&#39;,
+    y = &#39;Positive Surveillane Samples&#39;
+  )</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-5-1.png" width="672" /> It is clear that type A is the more prominent influenza type worldwide. H1N1 and H3 are the two prominent influenza A subtypes, H5 is not found in the surveillance samples. Especially of note is the year 2009, which saw a huge spike in influenza A, specifically subtype H1N1. This is the swine flu pandemic. We see that before this spike, H3 was the dominant subtype and the novel H1N1 type was nonexistant. Interestingly, after 2009, there does not appear to be a dominant subtype, as we see a relatively even number of H1N1 and H3 cases.</p>
+<pre class="r"><code>flu_df %&gt;% 
+  ggplot(aes(x = week, y = cases_by_100k, color = year)) +
+  geom_line() +
+  facet_wrap(~ fluregion)</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>From abaove, it is seen that the seasonality of influenza infections varies depending on the transmission zone. Specifically, zones that are in the northern hemisphere have a peak number of cases at the beginning and end of each year (the flu season beginning at the end of the year and continuing into the next year), while zones in the southern hemisphere have high case counts in the middle of the year. Of note is the year 2009 (yellow line), the pandemic year. This year has a different seasonal distribution as other years and a higher peak, which are characteristics of a global flu pandemic.</p>
+<p>Further analysis is limited to the zones with the most visible data; North America, Northern Europe, Oceania Melanesia Polynesia, and Temperate South America. The zone of Eastern Asia in the analysis because it includes China, a hotspot for the emergence of new influenza A subtypes, as well as the South Africa zone, in order to include a zone from that continent.</p>
+<p>Below is a closer look at the distribution of influenza types and subtypes by each selected zone:</p>
+<pre class="r"><code>NoAm = flu_df %&gt;% 
+  filter(fluregion == &#39;North America&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) + 
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;North America&#39;,
+    y = &#39;Cases&#39;
+  )
+
+NoEu = flu_df %&gt;% 
+  filter(fluregion == &#39;Northern Europe&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) +
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;Northern Europe&#39;,
+    y = &#39;Cases&#39;
+  )
+
+
+OMP = flu_df %&gt;% 
+  filter(fluregion == &#39;Oceania Melanesia Polynesia&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) +
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;Oceania Melanesia Polynesia&#39;,
+    y = &#39;Cases&#39;
+  )
+
+TSA = flu_df %&gt;% 
+  filter(fluregion == &#39;Temperate South America&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) +
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;Temperate South America&#39;,
+    y = &#39;Cases&#39;
+  )
+
+EaAs = flu_df %&gt;% 
+  filter(fluregion == &#39;Eastern Asia&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) +
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;Eastern Asia&#39;,
+    y = &#39;Cases&#39;
+  )
+
+SA = flu_df %&gt;% 
+  filter(fluregion == &#39;Southern Africa&#39;) %&gt;% 
+  ggplot() +
+  geom_line(aes(x = week, y = h1n1, color = &#39;H1&#39;)) +
+  geom_line(aes(x = week, y = h3, color = &#39;H3&#39;)) +
+  geom_line(aes(x = week, y = h5, color = &#39;H5&#39;)) +
+  geom_line(aes(x = week, y = b_total, color = &#39;Type B&#39;)) +
+  facet_grid(~ year) +
+  labs(
+    title = &#39;Southern Africa&#39;,
+    y = &#39;Cases&#39;
+  )</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-1.png" width="672" /><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-2.png" width="672" /><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-3.png" width="672" /><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-4.png" width="672" /><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-5.png" width="672" /><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-8-6.png" width="672" /></p>
+<p>Attention should be called to the temporal location of each peak for each zone. Zones in the Northern hemisphere (like North America and Northern Europe) have peak number of cases during the end/beginning of each year, and zones in the Southern hemisphere (like South Africa, Temperate South America, and Polynesia) have peak number of cases during the middle of the year. The Eastern Asia zone stands out in that most of the peaks occur during the end/beginning of the year, however, the H3 subtype seems to peak more so during the middle of the year.</p>
+</div>
+<div id="additional-exploration-and-the-epidemic-threshold" class="section level3">
+<h3>Additional Exploration and the Epidemic Threshold</h3>
+<p>A serfling regression model is used to estimate the epidemic threshold curve (serfling regression models are used by the CDC to calculate epidemic thresholds). The year 2009 is included in this exploration, even though this will effect the resulting curve.</p>
+<p>To test the regression model, North America data is visualized first:</p>
+<pre class="r"><code>epi_threshold_df = flu_df %&gt;% 
+  filter(fluregion %in% c(&#39;North America&#39;, &#39;Northern Europe&#39;, &#39;Oceania Melanesia Polynesia&#39;, &#39;Temperate South America&#39;, &#39;Eastern Asia&#39;, &#39;Southern Africa&#39;)) %&gt;% 
+  mutate(theta = 2*week/52,
+         sin_f1 = sin(theta),
+         cos_f1 = cos(theta),
+         week_2 = week^2,
+         week_3 = week^3,
+         week_4 = week^4,
+         week_5 = week^5)
+
+base_fit = epi_threshold_df %&gt;%
+  filter(fluregion == &#39;North America&#39;) %&gt;% 
+  lm(cases_by_100k ~ week + week_2 + week_3 + week_4 + week_5 + sin_f1 + cos_f1, data = ., na.action = na.exclude)
+
+base_pred = epi_threshold_df %&gt;%
+  mutate(inf_a_prop = 0) %&gt;%
+  predict(base_fit, newdata = ., se.fit = TRUE, 
+          interval = &#39;prediction&#39;, level = 0.90)
+
+flu_fitted = epi_threshold_df %&gt;%
+  add_column(y0 = base_pred$fit[,1], y0_ul = base_pred$fit[,3])
+
+flu_fitted %&gt;% 
+  filter(fluregion == &#39;North America&#39;) %&gt;% 
+  ggplot(aes(x = date, y = cases_by_100k)) +
+  geom_line() +
+  geom_line(aes(x = date, y = y0_ul, color = &#39;Epidemic Threshold&#39;)) +
+  labs(
+    title = &#39;Cases per 100k with Epidemic Threshold&#39;,
+    x = &#39;Year&#39;,
+    y = &#39;Cases per 100k&#39;
+  )</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>The regression uses cases per 100K as opposed to a simple case count as an outcome as it is easier to compare zones with different populations. The threshold is 1.64 standard deviations above the estimated number of cases, which is the standard the CDC uses.</p>
+<p>Writing a function in order to run the regression on the other zones of interest:</p>
+<pre class="r"><code>flu_lm = function(df){
+  
+  function_fit = df %&gt;%
+  lm(cases_by_100k ~ week + week_2 + week_3 + week_4 + week_5 + sin_f1 + cos_f1, data = ., na.action = na.exclude) 
+  
+function_pred = df %&gt;%
+  mutate(inf_a_prop = 0) %&gt;%
+  predict(function_fit, newdata = ., se.fit = TRUE, 
+          interval = &#39;prediction&#39;, level = 0.90)
+  
+  function_fitted = df %&gt;%
+  add_column(y0 = function_pred$fit[,1], y0_ul = function_pred$fit[,3])
+}
+
+serfling_df = epi_threshold_df %&gt;% 
+  group_by(fluregion) %&gt;% 
+  nest() %&gt;% 
+  mutate(map(data, ~flu_lm(.x))) %&gt;% 
+  unnest() </code></pre>
+<pre class="r"><code>serfling_df %&gt;% 
+  ggplot(aes(x = date, y = cases_by_100k)) +
+  geom_line() +
+  geom_line(aes(x = date, y = y0_ul, color = &#39;Epidemic Threshold&#39;)) +
+  facet_wrap(~fluregion) +
+  labs(
+    title = &#39;Cases per 100k with Epidemic Threshold&#39;,
+    x = &#39;Year&#39;,
+    y = &#39;Cases per 100k&#39;
+  )</code></pre>
+<p><img src="influenza_epidemic_curves_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>As in the North America example, the thresholds follow the seasonality of each respected region. When epidemics are declared varies by each region and is dictated by the history of influenza activity.</p>
+</div>
+
+<br><br>
+<footer>
+    <p class="copyright text-muted" align="center">Copyright &copy; 2019 Matthew Perrotta</p>
+</footer>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

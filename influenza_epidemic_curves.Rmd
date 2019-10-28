@@ -5,7 +5,7 @@ output: html_document
 
 This project will examime the seasonality of inlfuenza in different regions in the world using country level influenza data.
 
-```{r setup, include=FALSE}
+```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
@@ -209,7 +209,9 @@ SA = flu_df %>%
     title = 'Southern Africa',
     y = 'Cases'
   )
+```
 
+```{r, echo = FALSE}
 NoAm 
 NoEu
 OMP
