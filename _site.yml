@@ -5,6 +5,10 @@ navbar:
   left: 
     - text: "About"
       href: about.html
+    - text: "Projects"
+      menu:
+        - text: "Influenza Epidemic Curves"
+          href: influenza_epidemic_curves.html
     - text: "Resume"
       href: ./resume/Resume_Matthew_Perrotta.pdf
     - text: "Contact"
