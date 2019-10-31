@@ -289,6 +289,18 @@ $(document).ready(function () {
         <li>
   <a href="about.html">About</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="influenza_epidemic_curves.html">Influenza Epidemic Curves</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="./resume/Resume_Matthew_Perrotta.pdf">Resume</a>
 </li>
@@ -329,10 +341,10 @@ $(document).ready(function () {
 </div>
 
 
-<p>This project will examime the seasonality of inlfuenza in different regions in the world using country level influenza data.</p>
+<p>This project will examime the seasonality of influenza in different regions in the world using country level influenza data.</p>
 <div id="reading-and-cleaning-the-data" class="section level3">
 <h3>Reading and Cleaning the Data</h3>
-<p>Data was obtained from The WHO FLunet. The file was too large to handle, so the data was converted to multiple CSVs, and then function was written to read in the multiple CSV files.</p>
+<p>Data was obtained from The WHO FluNet. The file was too large to handle, so the data was converted to multiple CSVs, and then function was written to read in the multiple CSV files.</p>
 <pre class="r"><code>file_df = tibble(file_path = list.files(&#39;./data/&#39;, pattern = &#39;*.csv&#39;, full.names = TRUE), file_name = basename(file_path))
 
 read_data = function(data){
@@ -365,7 +377,6 @@ flu_df = file_df %&gt;%
 <p>In order to to calculate rates, population data was obtained from the World Bank. The population for each country was averaged from 2008 until 2014.</p>
 <pre class="r"><code>pop_df = read_excel(&quot;./data/pop_data.xls&quot;, skip = 3) %&gt;% 
   janitor::clean_names() %&gt;% 
-  #Selecting the specific year we are reading in.
   select(country, country_code, x2008:x2014) %&gt;% 
   gather(key = year, value = pop, x2008:x2014) %&gt;% 
   group_by(country) %&gt;% 
