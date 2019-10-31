@@ -3,7 +3,7 @@ title: "Influenza Epidemic Curves"
 output: html_document
 ---
 
-This project will examime the seasonality of inlfuenza in different regions in the world using country level influenza data.
+This project will examime the seasonality of influenza in different regions in the world using country level influenza data.
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -18,7 +18,7 @@ library(devtools)
 
 ### Reading and Cleaning the Data
 
-Data was obtained from The WHO FLunet.  The file was too large to handle, so the data was converted to multiple CSVs, and then function was written to read in the multiple CSV files.
+Data was obtained from The WHO FluNet.  The file was too large to handle, so the data was converted to multiple CSVs, and then function was written to read in the multiple CSV files.
 ```{r message = FALSE, warning = FALSE}
 file_df = tibble(file_path = list.files('./data/', pattern = '*.csv', full.names = TRUE), file_name = basename(file_path))
 
@@ -55,7 +55,6 @@ In order to to calculate rates, population data was obtained from the World Bank
 ```{r}
 pop_df = read_excel("./data/pop_data.xls", skip = 3) %>% 
   janitor::clean_names() %>% 
-  #Selecting the specific year we are reading in.
   select(country, country_code, x2008:x2014) %>% 
   gather(key = year, value = pop, x2008:x2014) %>% 
   group_by(country) %>% 
