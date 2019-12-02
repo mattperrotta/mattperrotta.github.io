@@ -19,7 +19,7 @@ title: ""
 
 <br>
 
-My previous academic and work experience has provided me with knowledge and skills that would allow me to excel in an analyst position. I have a Master’s degree in public health with a focus on the quantitative field of epidemiology. As an MPH graduate, I know that epidemiological and statistical work are intrinsically linked to the decisions and policies that shape the health of societies. 
+I have a Master’s degree in public health with a focus on the quantitative field of epidemiology. As an MPH graduate, I know that epidemiological and statistical work are intrinsically linked to the decisions and policies that shape the health of societies. 
 
 I am interested in parsing data to inform evidence-based medicine and policy. This interest is backed by my quantitative skill. Through coursework and experience, I have gained skill in logistic regression, linear regression, survival analysis (cox regression, Kaplan-meier curves), GEE, mixed models, lasso and ridge regression, GAMs, and clustering methods. While working at the NYC Department of Health and Mental Hygiene at was tasked with conducting an exploratory analysis of diabetes in NYC tuberculosis patients to better inform citywide health policy decisions. As an intern at EcoHealth Alliance, I was tasked with conducting a spatial analysis of malaria rates in Malaysia to help better understand the economic impact of deforestation.
 
